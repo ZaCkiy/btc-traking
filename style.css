@@ -178,7 +178,7 @@ nav {
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    margin: 2rem;
+    margin: 2rem 0;
 }
 
 .ma-value {
