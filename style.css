@@ -1,16 +1,17 @@
-/* ===== VARIABEL WARNA ===== */
-  --bg-color: #171717; (Hitam pekat)
-  --primary-color: #D2691E; (Oranye tembaga)
-  --secondary-color: #49796B; (Hijau tua)
-  --text-color: #FFFFFF; (Putih)
-  --text-secondary: #CCCCCC; (Abu-abu muda)
-  --card-bg: #202020; (Abu-abu gelap)
-  --positive: #4CAF50; (Hijau)
-  --negative: #F44336; (Merah)
-  --neutral: #FFC107; (Kuning emas)
-
-/* ===== GLOBAL STYLES ===== */
 :root {
+/* ===== VARIABEL WARNA ===== */
+  --bg-color: #171717; 
+  --primary-color: #D2691E; 
+  --secondary-color: #49796B; 
+  --text-color: #FFFFFF; 
+  --text-secondary: #CCCCCC; 
+  --card-bg: #202020; 
+  --positive: #4CAF50; 
+  --negative: #F44336; 
+  --neutral: #FFC107;
+    }
+/* ===== GLOBAL STYLES ===== */
+{
     font-size: 16px;
     scroll-behavior: smooth;
 }
