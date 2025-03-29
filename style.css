@@ -40,11 +40,12 @@ header {
     background-image: url('images/1743267931713.png');
     background-size: cover;
     background-position: center;
-    padding: 1rem 2rem;
+    min-height: 250px;
+    padding: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative; /* Tambahkan ini */
+    position: center; /* Tambahkan ini */
 }
 
 /* Untuk overlay gelap agar teks tetap terbaca */
@@ -61,8 +62,8 @@ header::before {
 
 
 h1 {
-    font-size: 2rem;
-    font-weight: 1000;
+    font-size: 3rem;
+    font-weight: 300;
 }
 
 nav {
