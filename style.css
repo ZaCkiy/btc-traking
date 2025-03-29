@@ -103,6 +103,7 @@ nav {
     border-radius: 12px;
     padding: 18px;
     margin: 0 auto 25px;
+    text-align: center;
     max-width: 100%;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     border: 1px solid rgba(210, 105, 30, 0.3);
@@ -112,6 +113,7 @@ nav {
     font-size: 1.8rem;
     font-weight: 700;
     margin-top: 8px;
+    justify-content: center;
 }
 
 /* Dashboard Indicators */
@@ -127,6 +129,7 @@ nav {
     background-color: var(--card-bg);
     border-radius: 12px;
     padding: 20px;
+    text-align: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
@@ -134,8 +137,8 @@ nav {
 .rsi-value {
     font-size: 2rem; /* Diperkecil dari sebelumnya */
     font-weight: 700;
-    text-align: center;
     margin: 10px 0;
+    justify-content: center;
 }
 
 .rsi-bar-container {
@@ -170,6 +173,7 @@ nav {
 /* Price Stats */
 .price-stats {
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .stats-grid {
