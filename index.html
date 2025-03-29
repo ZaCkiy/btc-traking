@@ -3,165 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jack BTC Analysis - Tracker Bitcoin Real-time</title>
+    <title>Jack BTC Analysis | Real-time Crypto Tracking</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Header dengan background 9:16 -->
     <header>
         <div class="header-content">
             <h1>Jack BTC Analysis</h1>
+            <p class="tagline">Real-time Cryptocurrency Analytics</p>
         </div>
     </header>
 
+    <!-- Navigation Menu -->
     <nav>
         <ul class="menu">
-            <li><a href="#about-btc">Tentang Bitcoin</a></li>
-            <li><a href="#about-crypto-invest">Tentang Investasi Kripto</a></li>
-            <li><a href="#rsi-stats">stat RSI</a></li>
-            <li><a href="#ma-stats">stat MA</a></li>
-            <li><a href="#btc-price-stats">Statistik Harga Bitcoin</a></li>
+            <li><a href="#about-btc"><i class="fas fa-coins"></i> Tentang Bitcoin</a></li>
+            <li><a href="#crypto-invest"><i class="fas fa-chart-line"></i> Investasi Kripto</a></li>
+            <li><a href="#rsi-stats"><i class="fas fa-wave-square"></i> stat RSI</a></li>
+            <li><a href="#ma-stats"><i class="fas fa-arrow-trend-up"></i> stat MA</a></li>
+            <li><a href="#price-stats"><i class="fas fa-table"></i> Statistik Harga</a></li>
         </ul>
     </nav>
 
-    <div class="current-price">
-        <h2>Harga Bitcoin Hari Ini</h2>
+    <!-- Current Price Section -->
+    <section class="current-price">
+        <h2><i class="fas fa-bitcoin"></i> Harga Bitcoin Hari Ini</h2>
         <div class="price-display">
-            <span id="current-btc-price">Memuat...</span>
-            <span id="price-change"></span>
+            <span id="current-btc-price">Rp 1.380.253.614</span>
+            <span id="price-change" class="positive">+2.5%</span>
         </div>
-    </div>
+    </section>
 
+    <!-- Main Dashboard -->
     <main>
-        <section class="dashboard">
+        <div class="dashboard">
+            <!-- RSI Indicator -->
             <div class="indicator-container">
-                <h3>Indikator RSI (14 Hari)</h3>
-                <div class="indicator-box">
-                    <div class="rsi-value" id="rsi-value">--</div>
-                    <div class="rsi-bar-container">
-                        <div class="rsi-bar" id="rsi-bar"></div>
-                    </div>
-                    <div class="rsi-labels">
-                        <span>0</span>
-                        <span>30</span>
-                        <span>50</span>
-                        <span>70</span>
-                        <span>100</span>
-                    </div>
+                <h3><i class="fas fa-wave-square"></i> Indikator RSI (14 Hari)</h3>
+                <div class="rsi-value" id="rsi-value">65</div>
+                <div class="rsi-bar-container">
+                    <div class="rsi-bar" id="rsi-bar"></div>
                 </div>
-                <div class="rsi-interpretation" id="rsi-interpretation"></div>
+                <div class="rsi-labels">
+                    <span>0</span>
+                    <span>30</span>
+                    <span>50</span>
+                    <span>70</span>
+                    <span>100</span>
+                </div>
+                <div class="rsi-interpretation" id="rsi-interpretation">Mendekati Overbought</div>
             </div>
 
+            <!-- MA Indicator -->
             <div class="indicator-container">
-                <h3>Moving Average (50 Hari)</h3>
-                <div class="ma-display" id="ma-display">
-                    <div class="ma-value">--</div>
+                <h3><i class="fas fa-arrow-trend-up"></i> Moving Average (50 Hari)</h3>
+                <div class="ma-display">
+                    <div class="ma-value" id="ma-value">Rp 1.350.000.000</div>
                     <div class="ma-direction" id="ma-direction">
-                        <i class="fas fa-arrows-alt-h"></i>
+                        <i class="fas fa-arrow-up"></i>
                     </div>
                 </div>
-                <div class="ma-interpretation" id="ma-interpretation"></div>
+                <div class="ma-interpretation" id="ma-interpretation">Trend Naik Kuat</div>
             </div>
-        </section>
+        </div>
 
-        <section class="price-stats" id="btc-price-stats">
-            <h2>Statistik Harga Bitcoin</h2>
+        <!-- Price Statistics -->
+        <section class="price-stats" id="price-stats">
+            <h2><i class="fas fa-chart-column"></i> Statistik Harga Bitcoin</h2>
             <div class="stats-grid">
                 <div class="stat-item">
-                    <h4>24 Jam</h4>
-                    <div class="stat-value" id="24h-change">--</div>
+                    <h4><i class="far fa-clock"></i> 24 Jam</h4>
+                    <div class="stat-value positive" id="24h-change">+2.5%</div>
                 </div>
                 <div class="stat-item">
-                    <h4>1 Hari</h4>
-                    <div class="stat-value" id="1d-change">--</div>
+                    <h4><i class="far fa-sun"></i> 1 Hari</h4>
+                    <div class="stat-value positive" id="1d-change">+3.1%</div>
                 </div>
                 <div class="stat-item">
-                    <h4>1 Minggu</h4>
-                    <div class="stat-value" id="7d-change">--</div>
+                    <h4><i class="far fa-calendar-week"></i> 1 Minggu</h4>
+                    <div class="stat-value negative" id="7d-change">-1.2%</div>
                 </div>
                 <div class="stat-item">
-                    <h4>1 Bulan</h4>
-                    <div class="stat-value" id="30d-change">--</div>
+                    <h4><i class="far fa-calendar"></i> 1 Bulan</h4>
+                    <div class="stat-value positive" id="30d-change">+15.3%</div>
                 </div>
                 <div class="stat-item">
-                    <h4>1 Tahun</h4>
-                    <div class="stat-value" id="1y-change">--</div>
+                    <h4><i class="far fa-calendar-check"></i> 1 Tahun</h4>
+                    <div class="stat-value positive" id="1y-change">+42.7%</div>
                 </div>
             </div>
         </section>
 
+        <!-- Informational Sections -->
         <section class="info-section" id="about-btc">
-            <h2>Tentang Bitcoin</h2>
-            <p>Bitcoin adalah mata uang digital terdesentralisasi pertama yang dibuat pada tahun 2009 oleh Satoshi Nakamoto. Bitcoin menggunakan teknologi peer-to-peer untuk beroperasi tanpa otoritas pusat atau bank; pengelolaan transaksi dan penerbitan bitcoin dilakukan secara kolektif oleh jaringan.</p>
+            <h2><i class="fas fa-coins"></i> Tentang Bitcoin</h2>
+            <p>Bitcoin adalah mata uang digital terdesentralisasi pertama yang diciptakan pada tahun 2009. Beroperasi tanpa bank sentral atau administrator tunggal, Bitcoin menggunakan teknologi blockchain untuk memastikan transparansi dan keamanan transaksi.</p>
         </section>
 
-        <section class="info-section" id="about-crypto-invest">
-            <h2>Tentang Investasi Kripto</h2>
-            <p>Investasi dalam kripto seperti Bitcoin memiliki potensi keuntungan tinggi tetapi juga risiko yang signifikan. Nilai kripto sangat volatil dan dapat berubah dengan cepat. Selalu lakukan riset sendiri dan hanya investasikan uang yang Anda sanggup untuk kehilangan.</p>
-        </section>
-
-        <section class="indicator-section" id="rsi-stats">
-            <h2>Indikator RSI (Relative Strength Index)</h2>
-            <div class="indicator-container full-width">
-                <div class="indicator-box">
-                    <div class="rsi-value" id="rsi-value-full">--</div>
-                    <div class="rsi-bar-container">
-                        <div class="rsi-bar" id="rsi-bar-full"></div>
-                    </div>
-                    <div class="rsi-labels">
-                        <span>0</span>
-                        <span>30</span>
-                        <span>50</span>
-                        <span>70</span>
-                        <span>100</span>
-                    </div>
-                </div>
-                <div class="rsi-interpretation" id="rsi-interpretation-full"></div>
-            </div>
-            <p>RSI adalah indikator momentum yang mengukur kecepatan dan perubahan pergerakan harga. Nilai RSI berkisar dari 0 hingga 100:</p>
-            <ul>
-                <li>RSI ≤ 30: Oversold (potensi beli)</li>
-                <li>30 < RSI < 70: Netral</li>
-                <li>RSI ≥ 70: Overbought (potensi jual)</li>
-            </ul>
-        </section>
-
-        <section class="indicator-section" id="ma-stats">
-            <h2>Indikator MA (Moving Average)</h2>
-            <div class="indicator-container full-width">
-                <div class="ma-display" id="ma-display-full">
-                    <div class="ma-value">--</div>
-                    <div class="ma-direction" id="ma-direction-full">
-                        <i class="fas fa-arrows-alt-h"></i>
-                    </div>
-                </div>
-                <div class="ma-interpretation" id="ma-interpretation-full"></div>
-            </div>
-            <p>Moving Average (MA) adalah indikator trend yang menghitung harga rata-rata aset selama periode tertentu. MA 50 hari menunjukkan trend jangka menengah:</p>
-            <ul>
-                <li>Harga di atas MA: Trend naik</li>
-                <li>Harga di bawah MA: Trend turun</li>
-                <li>MA menanjak: Momentum positif</li>
-                <li>MA menurun: Momentum negatif</li>
-            </ul>
+        <section class="info-section" id="crypto-invest">
+            <h2><i class="fas fa-chart-line"></i> Tentang Investasi Kripto</h2>
+            <p>Investasi dalam cryptocurrency menawarkan potensi keuntungan tinggi tetapi juga risiko signifikan. Volatilitas harga yang ekstrim memungkinkan keuntungan besar dalam waktu singkat, tetapi juga kerugian yang sama besarnya. Selalu lakukan riset sebelum berinvestasi.</p>
         </section>
     </main>
 
+    <!-- Footer dengan background 9:16 -->
     <footer>
         <div class="footer-content">
             <div class="copyright">
-                <p>&copy; 2023 Jack BTC Analysis. Semua hak dilindungi.</p>
-                <p>Dibuat oleh Jack BTC Team</p>
+                <p>&copy; 2023 Jack BTC Analysis. All rights reserved.</p>
+                <p>Dibuat dengan <i class="fas fa-heart" style="color: var(--negative);"></i> oleh Tim Analisis Kripto</p>
             </div>
             <div class="social-media">
                 <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
-</html>
+                </html>
