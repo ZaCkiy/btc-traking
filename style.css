@@ -1,5 +1,5 @@
 :root {
-    --bg-color: #2F2F2F;
+    --bg-color: #252525;
     --primary-color: #D2691E;
     --secondary-color: #49796B;
     --text-color: #FFFFFF;
@@ -22,14 +22,35 @@ body {
     color: var(--text-color);
     line-height: 1.6;
 }
-
 header {
-    background-color: var(--primary-color);
+    background-image: url('https://example.com/path/to/your/image.jpg');
+    background-size: cover;
+    background-position: center;
     padding: 1rem 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative; /* Tambahkan ini */
 }
+
+/* Untuk overlay gelap agar teks tetap terbaca */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Sesuaikan opacity (0.5 = 50%) */
+    z-index: 0;
+}
+
+/* Pastikan konten header di atas overlay */
+.header-content {
+    position: relative;
+    z-index: 1;
+}
+
 
 .header-content {
     display: flex;
@@ -44,7 +65,7 @@ header {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 600;
 }
 
@@ -57,7 +78,7 @@ nav {
     display: flex;
     list-style: none;
     justify-content: space-around;
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -65,7 +86,7 @@ nav {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     border-radius: 4px;
     transition: background-color 0.3s;
 }
@@ -76,7 +97,7 @@ nav {
 
 .current-price {
     text-align: center;
-    padding: 1.5rem;
+    padding: 1rem;
     background-color: var(--card-bg);
     margin: 1rem auto;
     max-width: 1200px;
@@ -84,21 +105,21 @@ nav {
 }
 
 .price-display {
-    font-size: 2rem;
+    font-size: 0.5rem;
     font-weight: 700;
     margin-top: 0.5rem;
 }
 
 main {
     max-width: 1200px;
-    margin: 2rem auto;
+    margin: 1rem auto;
     padding: 0 1rem;
 }
 
 .dashboard {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
     margin-bottom: 2rem;
 }
 
@@ -118,7 +139,7 @@ main {
 }
 
 .rsi-value {
-    font-size: 2.5rem;
+    font-size: 1rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 0.5rem;
@@ -161,7 +182,7 @@ main {
 }
 
 .ma-value {
-    font-size: 2.5rem;
+    font-size: 1rem;
     font-weight: 700;
 }
 
@@ -171,13 +192,13 @@ main {
 
 .price-stats {
     background-color: var(--card-bg);
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 8px;
     margin-bottom: 2rem;
 }
 
 .price-stats h2 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     text-align: center;
     color: var(--primary-color);
 }
@@ -201,13 +222,13 @@ main {
 }
 
 .stat-value {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
 }
 
 .info-section, .indicator-section {
     background-color: var(--card-bg);
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 8px;
     margin-bottom: 2rem;
 }
@@ -296,10 +317,10 @@ footer {
     }
     
     h1 {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
     
     .price-display {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 }
