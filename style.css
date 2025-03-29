@@ -35,7 +35,7 @@ body {
 /* Header dengan Background 9:16 */
 header {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                url('https://images.unsplash.com/photo-1621412607401-d3c7a159d3b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=900&h=1600&q=80') no-repeat center center;
+                url('images/header.png') no-repeat center center;
     background-size: cover;
     min-height: 40vh;
     display: flex;
@@ -68,9 +68,9 @@ nav {
     background-color: var(--card-bg);
     padding: 12px 0;
     position: sticky;
-    top: 0;
+    top: 1;
     z-index: 100;
-    margin: 0 -15px;
+    margin: 5px -15px;
 }
 
 .menu {
@@ -79,7 +79,7 @@ nav {
     flex-wrap: wrap;
     gap: 8px;
     list-style: none;
-    padding: 0 15px;
+    padding: 5px 15px;
 }
 
 .menu li a {
@@ -202,7 +202,7 @@ nav {
 /* Footer dengan Background 9:16 */
 footer {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                url('https://images.unsplash.com/photo-1639762681057-36e8e5f7092b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=900&h=1600&q=80') no-repeat center center;
+                url('images/footer.png') no-repeat center center;
     background-size: cover;
     min-height: 30vh;
     text-align: center;
