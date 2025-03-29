@@ -103,11 +103,14 @@ nav {
     border-radius: 12px;
     padding: 18px;
     margin: 10px auto 25px;
-    align-items: center;
-    text-align: center;
     max-width: 100%;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    border: 1px solid rgba(210, 105, 30, 0.3);
+    border: 2px solid rgba(210, 105, 30, 0.3);
+    /* Tambahkan jika belum ada: */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .price-display {
