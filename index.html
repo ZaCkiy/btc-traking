@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jack BTC Analysis - Tracker Bitcoin Real-time</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="https://img.freepik.com/free-vector/golden-bitcoin-coin-cryptocurrency-with-digital-circuit-lines_1017-33563.jpg" alt="Bitcoin Logo" class="bitcoin-logo">
+            <h1>Jack BTC Analysis</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul class="menu">
+            <li><a href="#about-btc">Tentang Bitcoin</a></li>
+            <li><a href="#about-crypto-invest">Tentang Investasi Kripto</a></li>
+            <li><a href="#rsi-stats">stat RSI</a></li>
+            <li><a href="#ma-stats">stat MA</a></li>
+            <li><a href="#btc-price-stats">Statistik Harga Bitcoin</a></li>
+        </ul>
+    </nav>
+
+    <div class="current-price">
+        <h2>Harga Bitcoin Hari Ini</h2>
+        <div class="price-display">
+            <span id="current-btc-price">Memuat...</span>
+            <span id="price-change"></span>
+        </div>
+    </div>
+
+    <main>
+        <section class="dashboard">
+            <div class="indicator-container">
+                <h3>Indikator RSI (14 Hari)</h3>
+                <div class="indicator-box">
+                    <div class="rsi-value" id="rsi-value">--</div>
+                    <div class="rsi-bar-container">
+                        <div class="rsi-bar" id="rsi-bar"></div>
+                    </div>
+                    <div class="rsi-labels">
+                        <span>0</span>
+                        <span>30</span>
+                        <span>50</span>
+                        <span>70</span>
+                        <span>100</span>
+                    </div>
+                </div>
+                <div class="rsi-interpretation" id="rsi-interpretation"></div>
+            </div>
+
+            <div class="indicator-container">
+                <h3>Moving Average (50 Hari)</h3>
+                <div class="ma-display" id="ma-display">
+                    <div class="ma-value">--</div>
+                    <div class="ma-direction" id="ma-direction">
+                        <i class="fas fa-arrows-alt-h"></i>
+                    </div>
+                </div>
+                <div class="ma-interpretation" id="ma-interpretation"></div>
+            </div>
+        </section>
+
+        <section class="price-stats" id="btc-price-stats">
+            <h2>Statistik Harga Bitcoin</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h4>24 Jam</h4>
+                    <div class="stat-value" id="24h-change">--</div>
+                </div>
+                <div class="stat-item">
+                    <h4>1 Hari</h4>
+                    <div class="stat-value" id="1d-change">--</div>
+                </div>
+                <div class="stat-item">
+                    <h4>1 Minggu</h4>
+                    <div class="stat-value" id="7d-change">--</div>
+                </div>
+                <div class="stat-item">
+                    <h4>1 Bulan</h4>
+                    <div class="stat-value" id="30d-change">--</div>
+                </div>
+                <div class="stat-item">
+                    <h4>1 Tahun</h4>
+                    <div class="stat-value" id="1y-change">--</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section" id="about-btc">
+            <h2>Tentang Bitcoin</h2>
+            <p>Bitcoin adalah mata uang digital terdesentralisasi pertama yang dibuat pada tahun 2009 oleh Satoshi Nakamoto. Bitcoin menggunakan teknologi peer-to-peer untuk beroperasi tanpa otoritas pusat atau bank; pengelolaan transaksi dan penerbitan bitcoin dilakukan secara kolektif oleh jaringan.</p>
+        </section>
+
+        <section class="info-section" id="about-crypto-invest">
+            <h2>Tentang Investasi Kripto</h2>
+            <p>Investasi dalam kripto seperti Bitcoin memiliki potensi keuntungan tinggi tetapi juga risiko yang signifikan. Nilai kripto sangat volatil dan dapat berubah dengan cepat. Selalu lakukan riset sendiri dan hanya investasikan uang yang Anda sanggup untuk kehilangan.</p>
+        </section>
+
+        <section class="indicator-section" id="rsi-stats">
+            <h2>Indikator RSI (Relative Strength Index)</h2>
+            <div class="indicator-container full-width">
+                <div class="indicator-box">
+                    <div class="rsi-value" id="rsi-value-full">--</div>
+                    <div class="rsi-bar-container">
+                        <div class="rsi-bar" id="rsi-bar-full"></div>
+                    </div>
+                    <div class="rsi-labels">
+                        <span>0</span>
+                        <span>30</span>
+                        <span>50</span>
+                        <span>70</span>
+                        <span>100</span>
+                    </div>
+                </div>
+                <div class="rsi-interpretation" id="rsi-interpretation-full"></div>
+            </div>
+            <p>RSI adalah indikator momentum yang mengukur kecepatan dan perubahan pergerakan harga. Nilai RSI berkisar dari 0 hingga 100:</p>
+            <ul>
+                <li>RSI ≤ 30: Oversold (potensi beli)</li>
+                <li>30 < RSI < 70: Netral</li>
+                <li>RSI ≥ 70: Overbought (potensi jual)</li>
+            </ul>
+        </section>
+
+        <section class="indicator-section" id="ma-stats">
+            <h2>Indikator MA (Moving Average)</h2>
+            <div class="indicator-container full-width">
+                <div class="ma-display" id="ma-display-full">
+                    <div class="ma-value">--</div>
+                    <div class="ma-direction" id="ma-direction-full">
+                        <i class="fas fa-arrows-alt-h"></i>
+                    </div>
+                </div>
+                <div class="ma-interpretation" id="ma-interpretation-full"></div>
+            </div>
+            <p>Moving Average (MA) adalah indikator trend yang menghitung harga rata-rata aset selama periode tertentu. MA 50 hari menunjukkan trend jangka menengah:</p>
+            <ul>
+                <li>Harga di atas MA: Trend naik</li>
+                <li>Harga di bawah MA: Trend turun</li>
+                <li>MA menanjak: Momentum positif</li>
+                <li>MA menurun: Momentum negatif</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                <p>&copy; 2023 Jack BTC Analysis. Semua hak dilindungi.</p>
+                <p>Dibuat oleh Jack BTC Team</p>
+            </div>
+            <div class="social-media">
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
