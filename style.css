@@ -22,6 +22,20 @@ body {
     color: var(--text-color);
     line-height: 1.6;
 }
+
+/* Pastikan konten header di atas overlay */
+.header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
 header {
     background-image: url('images/1743267931713.png');
     background-size: cover;
@@ -41,23 +55,10 @@ header::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Sesuaikan opacity (0.5 = 50%) */
+    background-color: rgba(0, 0, 0, 0.3); /* Sesuaikan opacity (0.5 = 50%) */
     z-index: 0;
 }
 
-/* Pastikan konten header di atas overlay */
-.header-content {
-    position: relative;
-    z-index: 1;
-}
-
-
-.header-content {
-    display: flex;
-    align-items: center;
-    max-width: 1200px;
-    width: 100%;
-}
 
 h1 {
     font-size: 2rem;
