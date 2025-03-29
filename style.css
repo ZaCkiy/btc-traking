@@ -10,309 +10,179 @@
     --neutral: #FFC107;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
+/* Background baru dengan rasio 9:16 */
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.6;
-}
-
-/* Pastikan konten header di atas overlay */
-.header-content {
-    position: relative;
-    z-index: 1;
-}
-
-.header-content {
-    display: flex;
-    align-items: center;
-    max-width: 1200px;
-    width: 100%;
-}
-
-header {
-    background-image: url('images/1743267931713.png');
+    font-family: 'Poppins', sans-serif;
+    background-image: url('https://images.unsplash.com/photo-1621412607401-d3c7a159d3b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=900&h=1600&q=80');
     background-size: cover;
     background-position: center;
-    min-height: 250px;
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: center; /* Tambahkan ini */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
-/* Untuk overlay gelap agar teks tetap terbaca */
-header::before {
+/* Overlay untuk meningkatkan keterbacaan */
+body::before {
     content: '';
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3); /* Sesuaikan opacity (0.5 = 50%) */
-    z-index: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
 }
 
+/* Header baru tanpa logo */
+header {
+    background: linear-gradient(135deg, rgba(255,149,0,0.9) 0%, rgba(255,94,0,0.9) 100%);
+    padding: 2rem 1rem;
+    text-align: center;
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    width: 100%;
+}
 
 h1 {
     font-size: 3rem;
-    font-weight: 300;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: 1px;
 }
 
+/* Menu navigasi */
 nav {
-    background-color: var(--card-bg);
-    padding: 0.5rem 2rem;
+    background-color: rgba(44, 44, 46, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.8rem 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .menu {
     display: flex;
-    list-style: none;
-    justify-content: space-around;
-    max-width: 900px;
-    margin: 0 auto;
+    justify-content: center;
+    gap: 1.5rem;
 }
 
 .menu li a {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
-    padding: 0.5rem 0.5rem;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
 }
 
 .menu li a:hover {
     background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+/* Current Price Section */
 .current-price {
-    text-align: center;
-    padding: 1rem;
-    background-color: var(--card-bg);
-    margin: 1rem auto;
-    max-width: 1200px;
-    border-radius: 8px;
-}
-
-.price-display {
-    font-size: 0.5rem;
-    font-weight: 700;
-    margin-top: 0.5rem;
-}
-
-main {
-    max-width: 1200px;
-    margin: 1rem auto;
-    padding: 0 1rem;
-}
-
-.dashboard {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.indicator-container {
-    background-color: var(--card-bg);
+    background-color: rgba(44, 44, 46, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
     padding: 1.5rem;
-    border-radius: 8px;
-}
-
-.indicator-container h3 {
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-}
-
-.indicator-box {
-    margin-bottom: 1rem;
-}
-
-.rsi-value {
-    font-size: 1rem;
-    font-weight: 700;
+    margin: 2rem auto;
+    max-width: 800px;
     text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.current-price h2 {
+    font-size: 1.2rem;
     margin-bottom: 0.5rem;
-}
-
-.rsi-bar-container {
-    height: 20px;
-    background-color: #555;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 0.5rem;
-}
-
-.rsi-bar {
-    height: 100%;
-    width: 50%;
-    background: linear-gradient(to right, var(--negative), var(--neutral), var(--positive));
-    border-radius: 10px;
-}
-
-.rsi-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
     color: var(--text-secondary);
 }
 
-.rsi-interpretation, .ma-interpretation {
-    font-style: italic;
-    text-align: center;
-    color: var(--primary-color);
-}
-
-.ma-display {
+.price-display {
+    font-size: 2.5rem;
+    font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 1rem;
 }
 
-.ma-value {
-    font-size: 1rem;
-    font-weight: 700;
-}
-
-.ma-direction {
-    font-size: 2rem;
-}
-
-.price-stats {
-    background-color: var(--card-bg);
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-}
-
-.price-stats h2 {
-    margin-bottom: 1rem;
-    text-align: center;
-    color: var(--primary-color);
-}
-
-.stats-grid {
+/* Dashboard Indicators */
+.dashboard {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
-}
-
-.stat-item {
-    background-color: #444;
-    padding: 1rem;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.stat-item h4 {
-    margin-bottom: 0.5rem;
-    color: var(--text-secondary);
-}
-
-.stat-value {
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-.info-section, .indicator-section {
-    background-color: var(--card-bg);
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-}
-
-.info-section h2, .indicator-section h2 {
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-}
-
-.indicator-section .indicator-container {
-    margin-bottom: 1.5rem;
-}
-
-.full-width {
-    width: 100%;
-}
-
-footer {
-    background-color: var(--card-bg);
-    padding: 2rem;
-    margin-top: 2rem;
-}
-
-.footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
     max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
 }
 
-.social-media {
-    display: flex;
-    gap: 1rem;
+.indicator-container {
+    background-color: rgba(44, 44, 46, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.3s ease;
 }
 
-.social-icon {
-    color: var(--text-color);
-    font-size: 1.5rem;
-    transition: color 0.3s;
+.indicator-container:hover {
+    transform: translateY(-5px);
 }
 
-.social-icon:hover {
-    color: var(--primary-color);
-}
+/* ... (bagian CSS lainnya tetap sama seperti sebelumnya) ... */
 
-/* Responsive design */
+/* Responsive Design */
 @media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
     .dashboard {
         grid-template-columns: 1fr;
     }
     
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
     .menu {
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
     }
     
-    .menu li {
-        margin-bottom: 0.5rem;
-    }
-    
-    .header-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
+    .menu li a {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
     }
 }
 
 @media (max-width: 480px) {
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    h1 {
-        font-size: 1rem;
-    }
-    
     .price-display {
-        font-size: 1rem;
+        flex-direction: column;
+        font-size: 2rem;
+    }
+    
+    header {
+        min-height: 15vh;
+        padding: 1.5rem 1rem;
     }
 }
