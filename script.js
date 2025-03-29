@@ -1,31 +1,9 @@
-// API Configuration
+// Konfigurasi
 const API_URL = 'https://api.coingecko.com/api/v3';
 const CURRENCY = 'idr';
+const REFRESH_INTERVAL = 60000; // 1 menit
 
-// DOM Elements
-const currentBtcPriceElement = document.getElementById('current-btc-price');
-const priceChangeElement = document.getElementById('price-change');
-const rsiValueElement = document.getElementById('rsi-value');
-const rsiBarElement = document.getElementById('rsi-bar');
-const rsiInterpretationElement = document.getElementById('rsi-interpretation');
-const maDisplayElement = document.getElementById('ma-display');
-const maDirectionElement = document.getElementById('ma-direction');
-const maInterpretationElement = document.getElementById('ma-interpretation');
-const change24hElement = document.getElementById('24h-change');
-const change1dElement = document.getElementById('1d-change');
-const change7dElement = document.getElementById('7d-change');
-const change30dElement = document.getElementById('30d-change');
-const change1yElement = document.getElementById('1y-change');
-
-// Full view indicators
-const rsiValueFullElement = document.getElementById('rsi-value-full');
-const rsiBarFullElement = document.getElementById('rsi-bar-full');
-const rsiInterpretationFullElement = document.getElementById('rsi-interpretation-full');
-const maDisplayFullElement = document.getElementById('ma-display-full');
-const maDirectionFullElement = document.getElementById('ma-direction-full');
-const maInterpretationFullElement = document.getElementById('ma-interpretation-full');
-
-// Format number to IDR currency
+// Format mata uang IDR
 function formatIDR(number) {
     return new Intl.NumberFormat('id-ID', {
         style: 'currency',
@@ -34,149 +12,138 @@ function formatIDR(number) {
     }).format(number);
 }
 
-// Format percentage
+// Format persentase
 function formatPercentage(number) {
-    return (number >= 0 ? '+' : '') + number.toFixed(2) + '%';
+    const formatted = (number >= 0 ? '+' : '') + number.toFixed(2) + '%';
+    return formatted;
 }
 
-// Get color based on value
-function getValueColor(value, isPositiveGood = true) {
+// Update warna berdasarkan nilai
+function updateValueColor(element, value, isPositiveGood = true) {
+    element.classList.remove('positive', 'negative', 'neutral');
+    
     if (value > 0) {
-        return isPositiveGood ? 'var(--positive)' : 'var(--negative)';
+        element.classList.add(isPositiveGood ? 'positive' : 'negative');
     } else if (value < 0) {
-        return isPositiveGood ? 'var(--negative)' : 'var(--positive)';
+        element.classList.add(isPositiveGood ? 'negative' : 'positive');
     } else {
-        return 'var(--neutral)';
+        element.classList.add('neutral');
     }
 }
 
-// Simulate RSI data (in a real app, you would calculate this from price data)
-function getRSIValue() {
-    // Simulate RSI between 20-80 for demo purposes
+// Generate RSI acak (simulasi)
+function generateRSI() {
+    // Simulasi RSI antara 20-80
     return Math.floor(Math.random() * 60) + 20;
 }
 
-// Simulate MA data (in a real app, you would calculate this from price data)
-function getMAValue(currentPrice) {
-    // Simulate MA close to current price (±10%)
+// Generate MA acak berdasarkan harga (simulasi)
+function generateMA(currentPrice) {
+    // Simulasi MA ±10% dari harga saat ini
     const variation = (Math.random() * 0.2) - 0.1;
     return currentPrice * (1 + variation);
 }
 
-// Update RSI display
+// Update tampilan RSI
 function updateRSI(rsiValue) {
-    rsiValueElement.textContent = rsiValue;
-    rsiValueFullElement.textContent = rsiValue;
+    const rsiElement = document.getElementById('rsi-value');
+    const rsiBar = document.getElementById('rsi-bar');
+    const interpretation = document.getElementById('rsi-interpretation');
     
-    // Set RSI bar width (clamped between 0-100)
-    const barWidth = Math.min(Math.max(rsiValue, 0), 100);
-    rsiBarElement.style.width = `${barWidth}%`;
-    rsiBarFullElement.style.width = `${barWidth}%`;
+    rsiElement.textContent = rsiValue;
+    rsiBar.style.width = `${rsiValue}%`;
     
-    // Set interpretation
-    let interpretation = '';
     if (rsiValue >= 70) {
-        interpretation = 'Overbought (Potensi Jual)';
-        rsiInterpretationElement.style.color = 'var(--negative)';
+        interpretation.textContent = 'Overbought (Potensi Jual)';
+        interpretation.style.color = 'var(--negative)';
     } else if (rsiValue <= 30) {
-        interpretation = 'Oversold (Potensi Beli)';
-        rsiInterpretationElement.style.color = 'var(--positive)';
+        interpretation.textContent = 'Oversold (Potensi Beli)';
+        interpretation.style.color = 'var(--positive)';
     } else {
-        interpretation = 'Netral';
-        rsiInterpretationElement.style.color = 'var(--neutral)';
+        interpretation.textContent = 'Netral';
+        interpretation.style.color = 'var(--neutral)';
     }
-    
-    rsiInterpretationElement.textContent = interpretation;
-    rsiInterpretationFullElement.textContent = interpretation;
-    rsiInterpretationFullElement.style.color = rsiInterpretationElement.style.color;
 }
 
-// Update MA display
+// Update tampilan MA
 function updateMA(maValue, currentPrice) {
-    const maElement = maDisplayElement.querySelector('.ma-value');
-    const maFullElement = maDisplayFullElement.querySelector('.ma-value');
+    const maElement = document.getElementById('ma-value');
+    const maDirection = document.getElementById('ma-direction');
+    const interpretation = document.getElementById('ma-interpretation');
     
     maElement.textContent = formatIDR(maValue);
-    maFullElement.textContent = formatIDR(maValue);
     
-    // Determine direction
-    let directionIcon = 'fa-arrows-alt-h';
-    let interpretation = '';
+    const percentageDiff = ((currentPrice - maValue) / maValue) * 100;
+    const directionIcon = percentageDiff > 2 ? 'fa-arrow-up' : 
+                         percentageDiff < -2 ? 'fa-arrow-down' : 'fa-arrows-alt-h';
     
-    if (currentPrice > maValue * 1.02) {
-        directionIcon = 'fa-arrow-up';
-        interpretation = 'Trend Naik Kuat';
-        maDirectionElement.style.color = 'var(--positive)';
-    } else if (currentPrice > maValue) {
-        directionIcon = 'fa-arrow-up';
-        interpretation = 'Trend Naik';
-        maDirectionElement.style.color = 'var(--positive)';
-    } else if (currentPrice < maValue * 0.98) {
-        directionIcon = 'fa-arrow-down';
-        interpretation = 'Trend Turun Kuat';
-        maDirectionElement.style.color = 'var(--negative)';
-    } else if (currentPrice < maValue) {
-        directionIcon = 'fa-arrow-down';
-        interpretation = 'Trend Turun';
-        maDirectionElement.style.color = 'var(--negative)';
+    maDirection.innerHTML = `<i class="fas ${directionIcon}"></i>`;
+    
+    if (percentageDiff > 5) {
+        interpretation.textContent = 'Trend Naik Kuat';
+        maDirection.style.color = 'var(--positive)';
+    } else if (percentageDiff > 0) {
+        interpretation.textContent = 'Trend Naik';
+        maDirection.style.color = 'var(--positive)';
+    } else if (percentageDiff < -5) {
+        interpretation.textContent = 'Trend Turun Kuat';
+        maDirection.style.color = 'var(--negative)';
+    } else if (percentageDiff < 0) {
+        interpretation.textContent = 'Trend Turun';
+        maDirection.style.color = 'var(--negative)';
     } else {
-        interpretation = 'Netral';
-        maDirectionElement.style.color = 'var(--neutral)';
+        interpretation.textContent = 'Netral';
+        maDirection.style.color = 'var(--neutral)';
     }
-    
-    maDirectionElement.innerHTML = `<i class="fas ${directionIcon}"></i>`;
-    maDirectionFullElement.innerHTML = `<i class="fas ${directionIcon}"></i>`;
-    maDirectionFullElement.style.color = maDirectionElement.style.color;
-    
-    maInterpretationElement.textContent = interpretation;
-    maInterpretationFullElement.textContent = interpretation;
 }
 
-// Fetch Bitcoin data from CoinGecko API
+// Fetch data dari API
 async function fetchBitcoinData() {
     try {
-        // Fetch current price
+        // Fetch harga saat ini
         const priceResponse = await fetch(`${API_URL}/simple/price?ids=bitcoin&vs_currencies=${CURRENCY}&include_24hr_change=true`);
         const priceData = await priceResponse.json();
         
         const currentPrice = priceData.bitcoin[CURRENCY];
         const priceChange24h = priceData.bitcoin[`${CURRENCY}_24h_change`];
         
-        // Update current price display
-        currentBtcPriceElement.textContent = formatIDR(currentPrice);
+        // Update harga
+        document.getElementById('current-btc-price').textContent = formatIDR(currentPrice);
         
-        // Update 24h change
+        // Update persentase perubahan
+        const priceChangeElement = document.getElementById('price-change');
         priceChangeElement.textContent = formatPercentage(priceChange24h);
-        priceChangeElement.style.color = getValueColor(priceChange24h);
-        change24hElement.textContent = formatPercentage(priceChange24h);
-        change24hElement.style.color = getValueColor(priceChange24h);
+        updateValueColor(priceChangeElement, priceChange24h);
         
-        // For demo, we'll simulate other time periods
-        change1dElement.textContent = formatPercentage(priceChange24h * 1.2);
-        change1dElement.style.color = getValueColor(priceChange24h * 1.2);
+        // Update statistik (simulasi)
+        document.getElementById('24h-change').textContent = formatPercentage(priceChange24h);
+        document.getElementById('1d-change').textContent = formatPercentage(priceChange24h * 1.2);
+        document.getElementById('7d-change').textContent = formatPercentage(priceChange24h * -0.5);
+        document.getElementById('30d-change').textContent = formatPercentage(priceChange24h * 5);
+        document.getElementById('1y-change').textContent = formatPercentage(priceChange24h * 15);
         
-        change7dElement.textContent = formatPercentage(priceChange24h * 5);
-        change7dElement.style.color = getValueColor(priceChange24h * 5);
-        
-        change30dElement.textContent = formatPercentage(priceChange24h * 10);
-        change30dElement.style.color = getValueColor(priceChange24h * 10);
-        
-        change1yElement.textContent = formatPercentage(priceChange24h * 30);
-        change1yElement.style.color = getValueColor(priceChange24h * 30);
-        
-        // Update indicators
-        const rsiValue = getRSIValue();
-        updateRSI(rsiValue);
-        
-        const maValue = getMAValue(currentPrice);
-        updateMA(maValue, currentPrice);
+        // Update indikator
+        updateRSI(generateRSI());
+        updateMA(generateMA(currentPrice), currentPrice);
         
     } catch (error) {
-        console.error('Error fetching Bitcoin data:', error);
-        currentBtcPriceElement.textContent = 'Gagal memuat data';
+        console.error('Error fetching data:', error);
+        document.getElementById('current-btc-price').textContent = 'Gagal memuat data';
     }
 }
 
-// Initialize and update data periodically
-fetchBitcoinData();
-setInterval(fetchBitcoinData, 60000); // Update every minute
+// Inisialisasi
+document.addEventListener('DOMContentLoaded', () => {
+    fetchBitcoinData();
+    setInterval(fetchBitcoinData, REFRESH_INTERVAL);
+    
+    // Animasi scroll halus
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+});
