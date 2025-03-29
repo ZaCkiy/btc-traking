@@ -1,10 +1,10 @@
 :root {
-    --bg-color: #252525;
+    --bg-color: #171717;
     --primary-color: #D2691E;
     --secondary-color: #49796B;
     --text-color: #FFFFFF;
     --text-secondary: #CCCCCC;
-    --card-bg: #3D3D3D;
+    --card-bg: #202020;
     --positive: #4CAF50;
     --negative: #F44336;
     --neutral: #FFC107;
@@ -23,7 +23,7 @@ body {
     line-height: 1.6;
 }
 header {
-    background-image: url('https://example.com/path/to/your/image.jpg');
+    background-image: url('1743267931713.png');
     background-size: cover;
     background-position: center;
     padding: 1rem 2rem;
@@ -59,14 +59,9 @@ header::before {
     width: 100%;
 }
 
-.bitcoin-logo {
-    height: 60px;
-    margin-right: 20px;
-}
-
 h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
+    font-size: 5rem;
+    font-weight: 800;
 }
 
 nav {
@@ -297,11 +292,6 @@ footer {
     .header-content {
         flex-direction: column;
         text-align: center;
-    }
-    
-    .bitcoin-logo {
-        margin-right: 0;
-        margin-bottom: 1rem;
     }
     
     .footer-content {
