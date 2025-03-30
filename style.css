@@ -176,8 +176,8 @@ nav {
 /* Price Stats */
 .price-stats {
     margin-bottom: 30px;
-    text-align: center;
     align-items: center;
+    text-align: center;
 }
 
 .stats-grid {
@@ -191,7 +191,7 @@ nav {
     background-color: var(--card-bg);
     border-radius: 10px;
     padding: 15px;
-    
+    text-align: center;
     align-items: center;
 }
 
