@@ -144,17 +144,23 @@ nav {
 }
 
 .rsi-bar-container {
-    height: 16px; /* Diperkecil */
-    background-color: #333;
-    border-radius: 8px;
-    margin: 15px 0;
-    align-items: center;
+    height: 20px;
+    width: 100%;
+    background-color: #333; /* Warna track */
+    border-radius: 10px;
+    overflow: hidden; /* Penting! */
+    margin: 10px 0;
 }
 
 .rsi-bar {
     height: 100%;
-    border-radius: 8px;
-}
+    width: 50%; /* Nilai awal, akan diupdate JS */
+    background: linear-gradient(90deg, 
+        var(--negative) 0%, 
+        var(--neutral) 50%, 
+        var(--positive) 100%);
+    transition: width 0.5s ease; /* Animasi perubahan */
+    }
 
 /* MA Indicator */
 .ma-display {
